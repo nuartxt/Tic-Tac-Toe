@@ -5,60 +5,39 @@ let theInputField = [
 ];
 
 
+let stepPlayer1 = [];
+let stepPlayer2 = [];
 
 
 
 
 
-/* */
+function callPrompt() {
+    for (let i = 0; i < 5; i++) {
+        let player1_index = Number(prompt("Go X"));
+        let player2_index = Number(prompt("Go Y"));
 
-let player1arr = [];
-let player2arr = [];
-
-for (let i = 0; i < 5; i++) {
-    let player1_index = Number(prompt("Go X"));
-    let player2_index = Number(prompt("Go Y"));
-
-    player1arr.push(player1_index);
-    player2arr.push(player2_index);
-}
-
-
-
-
-
-for (let i = 0; i < theInputField.length; i++) {
-    if (player1arr.includes(theInputField[i])) {
-        theInputField[i] = "X";
-    }
-    if (player2arr.includes(theInputField[i])) {
-        theInputField[i] = "0";
+        stepPlayer1.push(player1_index);
+        stepPlayer2.push(player2_index);
     }
 }
 
-/**/
 
 
+callPrompt();
 
 
-
-
-
-
-// let player1_index = Number(prompt())
-// let player2_index = Number(prompt())
-
-
-
-// for (let i = 0; i < theInputField.length; i++) {
-//     if (theInputField[i] == player1_index) {
-//         theInputField[i] = "X";
-//     }
-//     if (theInputField[i] == player2_index) {
-//         theInputField[i] = "0";
-//     }
-// }
-
+function addInGameBox() {
+    for (let i = 0; i < theInputField.length; i++) {
+        if (stepPlayer1.includes(theInputField[i])) {
+            theInputField[i] = "X";
+        }
+        if (stepPlayer2.includes(theInputField[i])) {
+            theInputField[i] = "0";
+        }
+    }
+}
+// addInGameBox();
 
 
 
