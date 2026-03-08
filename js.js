@@ -6,10 +6,9 @@ let theInputField = [
 
 
 
-
-
 let stepPlayer1 = [];
 let stepPlayer2 = [];
+
 
 
 
@@ -35,15 +34,15 @@ function addInGameBox(bigArray) {
 }
 
 
-// callPrompt();
-// addInGameBox(theInputField);
+callPrompt();
+addInGameBox(theInputField);
 
 
+let result = "";
 
 
-// /* by cross */
+/* by cross */
 
-// let result = ""
 
 // let leftCrossArr = [];
 // for (let i = 0; i < theInputField.length; i += 4) {
@@ -68,34 +67,38 @@ function addInGameBox(bigArray) {
 // }
 // console.log(rightCrossArr);
 
-// /* by line */
 
-// let a = theInputField[0];
+/* by line */
 
-// for (let i = 0; i < theInputField.length; i++) {
-//     if (a == "X" && a + 1 == "X" && a + 2 == "X") {
-//         result = "X win";
-//     } else if (a == "0" && a + 1 == "0" && a + 2 == "0") {
-//         result = "0 win";
-//     }
-//     if (a + 3 == "X" && a + 4 == "X" && a + 5 == "X") {
-//         result = "X win";
-//     } else if (a == "0" && a + 1 == "0" && a + 2 == "0") {
-//         result = "0 win";
-//     }
-//     if (a + 6 == "X" && a + 7 == "X" && a + 8 == "X") {
-//         result = "X win";
-//     } else if (a == "0" && a + 1 == "0" && a + 2 == "0") {
-//         result = "0 win";
-//     }
-// }
+let a = theInputField[0];
+for (let i = 0; i < theInputField.length / 3; i++) {
 
-/*by column */
-let column = 1;
-for(let i = 0; i < 3; i++){
-    column ++;
+    if (theInputField[i] == "X") {
+        result = "X win";
+    } else if (theInputField[i] == "0") {
+        result = "0 win"
+    }
+    if (theInputField[i += 4] == "X") {
+        result = "X win";
+    } else if (theInputField[i += 4] == "0") {
+        result = "0 win"
+    }
+    if (theInputField[i += 7] == "X") {
+        result = "X win";
+    } else if (theInputField[i += 7] == "0") {
+        result = "0 win"
+    }
 }
-let columnArr = [];
+
+
+
+
+// /*by column */
+// let column = 1;
+// for (let i = 0; i < 3; i++) {
+//     column++;
+// }
+// let columnArr = [];
 // for (let i = column; i < theInputField.length; i += 3) {
 //     columnArr.push(theInputField[i]);
 //     if (columnArr.length == 3 && columnArr.every(el => el == "X")) {
@@ -106,10 +109,10 @@ let columnArr = [];
 //         column++;
 //     }
 // }
-for (let i = 0; i < theInputField.length; i += 3) {
-    columnArr.push(theInputField[i]);
-}
-console.log(columnArr);
+// // for (let i = 0; i < theInputField.length; i += 3) {
+// //     columnArr.push(theInputField[i]);
+// // }
+// console.log(columnArr);
 
 
 
