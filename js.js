@@ -1,3 +1,6 @@
+let items = document.querySelectorAll(".gameBoxItem");
+
+
 let theInputField = [
     1, 2, 3,
     4, 5, 6,
@@ -10,6 +13,17 @@ let stepPlayer2 = [];
 
 let result = "";
 
+
+// function callPrompt(items) {
+//     items.forEach(el => {
+//         el.addEventListener("click", () => {
+//             stepPlayer1.push(Number(el.id));
+//             stepPlayer2.push(Number(el.id));
+
+//         })
+//     })
+// }
+// callPrompt(items);
 
 
 function callPrompt() {
@@ -46,7 +60,7 @@ function findWinnerByCross() {
             result = "0 win";
         }
     }
-    console.log(leftCrossArr)
+    // console.log(leftCrossArr)
 
     let rightCrossArr = [];
     for (let i = 2; i < theInputField.length - 1; i += 2) {
@@ -57,7 +71,7 @@ function findWinnerByCross() {
             result = "0 win";
         }
     }
-    console.log(rightCrossArr);
+    // console.log(rightCrossArr);
 
 }
 
@@ -74,7 +88,7 @@ function findWinnerByLine() {
                 result = "0 win";
             }
         }
-        console.log(lineArr);
+        // console.log(lineArr);
         lineArr = [];
     }
 
@@ -94,7 +108,7 @@ function findWinnerByColumn() {
             }
 
         }
-        console.log(columnArr);
+        // console.log(columnArr);
         columnArr = [];
     }
 }
@@ -108,6 +122,7 @@ callPrompt();
 addInGameBox(theInputField);
 
 
+
 if (result.length == 0) {
     findWinnerByCross();
 }
@@ -117,7 +132,6 @@ if (result.length == 0) {
 if (result.length == 0) {
     findWinnerByColumn();
 }
-
 
 
 console.log(theInputField);

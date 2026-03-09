@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.container {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameBox {
+    padding: 5px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    /* background-color: rgb(243, 243, 129); */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    list-style: none;
+}
+
+.gameBoxItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 243, 129);
+
+}
