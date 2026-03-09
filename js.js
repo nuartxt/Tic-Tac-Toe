@@ -102,11 +102,23 @@ function findWinnerByColumn() {
 
 /* */
 
+
+
 callPrompt();
 addInGameBox(theInputField);
-findWinnerByCross();
-findWinnerByLine();
-findWinnerByColumn();
+
+
+if (result.length == 0) {
+    findWinnerByCross();
+}
+if (result.length == 0) {
+    findWinnerByLine();
+}
+if (result.length == 0) {
+    findWinnerByColumn();
+}
+
+
 
 console.log(theInputField);
 console.log(result);
