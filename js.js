@@ -5,10 +5,10 @@ let theInputField = [
 ];
 
 
-
 let stepPlayer1 = [];
 let stepPlayer2 = [];
 
+let result = "";
 
 
 
@@ -34,86 +34,79 @@ function addInGameBox(bigArray) {
 }
 
 
-callPrompt();
-addInGameBox(theInputField);
+/* Finding winner */
 
-
-let result = "";
-
-
-/* by cross */
-
-// let leftCrossArr = [];
-// for (let i = 0; i < theInputField.length; i += 4) {
-//     leftCrossArr.push(theInputField[i]);
-//     if (leftCrossArr.length == 3 && leftCrossArr.every(el => el === "X")) {
-//         result = "X win";
-//     } else if (leftCrossArr.length == 3 && leftCrossArr.every(el => el === "0")) {
-//         result = "0 win";
-//     }
-// }
-// console.log(leftCrossArr)
-
-// let rightCrossArr = [];
-// for (let i = 2; i < theInputField.length - 1; i += 2) {
-//     rightCrossArr.push(theInputField[i]);
-//     if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "X")) {
-//         result = "X win";
-//     } else if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "0")) {
-//         result = "0 win";
-//     }
-// }
-// console.log(rightCrossArr);
-
-
-
-
-// /* by line */
-
-// let a = theInputField[0];
-// let lineArr = [];
-// for (let i = 0; i < theInputField.length / 3; i++) {
-//     lineArr.push(theInputField[i]);
-//     if (theInputField[i] == "X") {
-//         result = "X win";
-//     } else if (theInputField[i] == "0") {
-//         result = "0 win"
-//     }
-//     if (theInputField[i += 4] == "X") {
-//         result = "X win";
-//     } else if (theInputField[i += 4] == "0") {
-//         result = "0 win"
-//     }
-//     if (theInputField[i += 7] == "X") {
-//         result = "X win";
-//     } else if (theInputField[i += 7] == "0") {
-//         result = "0 win"
-//     }
-// }
-
-
-
-
-/*by column */
-let column;
-
-let columnArr = [];
-for (column = 0; column < 3; column++) {
-    for (let i = column; i < theInputField.length; i += 3) {
-        columnArr.push(theInputField[i]);
-        if (columnArr.length == 3 && columnArr.every(el => el == "X")) {
+function findWinnerByCross() {
+    let leftCrossArr = [];
+    for (let i = 0; i < theInputField.length; i += 4) {
+        leftCrossArr.push(theInputField[i]);
+        if (leftCrossArr.length == 3 && leftCrossArr.every(el => el === "X")) {
             result = "X win";
-        } else if (columnArr.length == 3 && columnArr.every(el => el == "0")) {
+        } else if (leftCrossArr.length == 3 && leftCrossArr.every(el => el === "0")) {
             result = "0 win";
         }
-
     }
-    console.log(columnArr);
-    columnArr = [];
+    console.log(leftCrossArr)
+
+    let rightCrossArr = [];
+    for (let i = 2; i < theInputField.length - 1; i += 2) {
+        rightCrossArr.push(theInputField[i]);
+        if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "X")) {
+            result = "X win";
+        } else if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "0")) {
+            result = "0 win";
+        }
+    }
+    console.log(rightCrossArr);
+
 }
 
 
+function findWinnerByLine() {
+    let lineArr = [];
+    let line;
+    for (line = 0; line < theInputField.length; line += 3) {
+        for (let i = line; i < line + 3; i++) {
+            lineArr.push(theInputField[i]);
+            if (lineArr.length == 3 && lineArr.every(el => el == "X")) {
+                result = "X win";
+            } else if (lineArr.length == 3 && lineArr.every(el => el == "0")) {
+                result = "0 win";
+            }
+        }
+        console.log(lineArr);
+        lineArr = [];
+    }
 
+}
+
+
+function findWinnerByColumn() {
+    let column;
+    let columnArr = [];
+    for (column = 0; column < 3; column++) {
+        for (let i = column; i < theInputField.length; i += 3) {
+            columnArr.push(theInputField[i]);
+            if (columnArr.length == 3 && columnArr.every(el => el == "X")) {
+                result = "X win";
+            } else if (columnArr.length == 3 && columnArr.every(el => el == "0")) {
+                result = "0 win";
+            }
+
+        }
+        console.log(columnArr);
+        columnArr = [];
+    }
+}
+
+
+/* */
+
+callPrompt();
+addInGameBox(theInputField);
+findWinnerByCross();
+findWinnerByLine();
+findWinnerByColumn();
 
 console.log(theInputField);
 console.log(result);
