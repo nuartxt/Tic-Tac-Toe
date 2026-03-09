@@ -43,7 +43,6 @@ let result = "";
 
 /* by cross */
 
-
 // let leftCrossArr = [];
 // for (let i = 0; i < theInputField.length; i += 4) {
 //     leftCrossArr.push(theInputField[i]);
@@ -60,59 +59,59 @@ let result = "";
 //     rightCrossArr.push(theInputField[i]);
 //     if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "X")) {
 //         result = "X win";
-//     }
-//     if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "0")) {
+//     } else if (rightCrossArr.length == 3 && rightCrossArr.every(el => el == "0")) {
 //         result = "0 win";
 //     }
 // }
 // console.log(rightCrossArr);
 
 
-/* by line */
-
-let a = theInputField[0];
-for (let i = 0; i < theInputField.length / 3; i++) {
-
-    if (theInputField[i] == "X") {
-        result = "X win";
-    } else if (theInputField[i] == "0") {
-        result = "0 win"
-    }
-    if (theInputField[i += 4] == "X") {
-        result = "X win";
-    } else if (theInputField[i += 4] == "0") {
-        result = "0 win"
-    }
-    if (theInputField[i += 7] == "X") {
-        result = "X win";
-    } else if (theInputField[i += 7] == "0") {
-        result = "0 win"
-    }
-}
 
 
+// /* by line */
 
-
-// /*by column */
-// let column = 1;
-// for (let i = 0; i < 3; i++) {
-//     column++;
-// }
-// let columnArr = [];
-// for (let i = column; i < theInputField.length; i += 3) {
-//     columnArr.push(theInputField[i]);
-//     if (columnArr.length == 3 && columnArr.every(el => el == "X")) {
+// let a = theInputField[0];
+// let lineArr = [];
+// for (let i = 0; i < theInputField.length / 3; i++) {
+//     lineArr.push(theInputField[i]);
+//     if (theInputField[i] == "X") {
 //         result = "X win";
-//     } else if (columnArr.length == 3 && columnArr.every(el => el == "0")) {
-//         result = "0 win";
-//     } else {
-//         column++;
+//     } else if (theInputField[i] == "0") {
+//         result = "0 win"
+//     }
+//     if (theInputField[i += 4] == "X") {
+//         result = "X win";
+//     } else if (theInputField[i += 4] == "0") {
+//         result = "0 win"
+//     }
+//     if (theInputField[i += 7] == "X") {
+//         result = "X win";
+//     } else if (theInputField[i += 7] == "0") {
+//         result = "0 win"
 //     }
 // }
-// // for (let i = 0; i < theInputField.length; i += 3) {
-// //     columnArr.push(theInputField[i]);
-// // }
-// console.log(columnArr);
+
+
+
+
+/*by column */
+let column;
+
+let columnArr = [];
+for (column = 0; column < 3; column++) {
+    for (let i = column; i < theInputField.length; i += 3) {
+        columnArr.push(theInputField[i]);
+        if (columnArr.length == 3 && columnArr.every(el => el == "X")) {
+            result = "X win";
+        } else if (columnArr.length == 3 && columnArr.every(el => el == "0")) {
+            result = "0 win";
+        }
+
+    }
+    console.log(columnArr);
+    columnArr = [];
+}
+
 
 
 
