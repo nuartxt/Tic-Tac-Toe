@@ -14,35 +14,46 @@ let stepPlayer2 = [];
 let result = "";
 
 
-// function callPrompt(items) {
-//     items.forEach(el => {
-//         el.addEventListener("click", () => {
-//             stepPlayer1.push(Number(el.id));
-//             stepPlayer2.push(Number(el.id));
-
-//         })
-//     })
-// }
-// callPrompt(items);
-
-
-function callPrompt() {
-    for (let i = 0; i < 5; i++) {
-        let player1_index = Number(prompt("Go X"));
-        let player2_index = Number(prompt("Go 0"));
-
-        stepPlayer1.push(player1_index);
-        stepPlayer2.push(player2_index);
-    }
+/*Front-end */
+function callPrompt(items) {
+    let flag = 0;
+    items.forEach(el => {
+        el.addEventListener("click", () => {
+            if (flag == 0) {
+                stepPlayer1.push(Number(el.id));
+                flag += 1;
+                console.log("step1 = " + stepPlayer1);
+            } else if (flag == 1) {
+                stepPlayer2.push(Number(el.id));
+                flag -= 1;
+                console.log("step2 = " + stepPlayer2);
+            }
+        })
+    })
 }
+/* */
+
+
+
+
+
+// function callPrompt() {
+//     for (let i = 0; i < 5; i++) {
+//         let player1_index = Number(prompt("Go X"));
+//         let player2_index = Number(prompt("Go 0"));
+
+//         stepPlayer1.push(player1_index);
+//         stepPlayer2.push(player2_index);
+//     }
+// }
 
 function addInGameBox(bigArray) {
     for (let i = 0; i < bigArray.length; i++) {
         if (stepPlayer1.includes(bigArray[i])) {
-            theInputField[i] = "X";
+            bigArray[i] = "X";
         }
         if (stepPlayer2.includes(bigArray[i])) {
-            theInputField[i] = "0";
+            bigArray[i] = "0";
         }
     }
 }
@@ -117,8 +128,8 @@ function findWinnerByColumn() {
 /* */
 
 
-
-callPrompt();
+callPrompt(items);
+// callPrompt();
 addInGameBox(theInputField);
 
 
