@@ -12,27 +12,20 @@ let stepPlayer1 = [];
 let stepPlayer2 = [];
 
 let result = "";
+let flag = 0;
 
 
-/*Front-end */
-function callPrompt(items) {
-    let flag = 0;
-    items.forEach(el => {
-        el.addEventListener("click", () => {
-            if (flag == 0) {
-                stepPlayer1.push(Number(el.id));
-                flag += 1;
-                console.log("step1 = " + stepPlayer1);
-            } else if (flag == 1) {
-                stepPlayer2.push(Number(el.id));
-                flag -= 1;
-                console.log("step2 = " + stepPlayer2);
-            }
-        })
-    })
+function callPrompt(el) {
+    if (flag == 0) {
+        stepPlayer1.push(Number(el.id));
+        flag += 1;
+        console.log("step1 = " + stepPlayer1);
+    } else if (flag == 1) {
+        stepPlayer2.push(Number(el.id));
+        flag -= 1;
+        console.log("step2 = " + stepPlayer2);
+    }
 }
-/* */
-
 
 
 
@@ -47,17 +40,18 @@ function callPrompt(items) {
 //     }
 // }
 
-function addInGameBox(bigArray) {
-    for (let i = 0; i < bigArray.length; i++) {
-        if (stepPlayer1.includes(bigArray[i])) {
-            bigArray[i] = "X";
+
+function addInGameBox() {
+    for (let i = 0; i < theInputField.length; i++) {
+        if (stepPlayer1.includes(theInputField[i])) {
+            theInputField[i] = "X";
         }
-        if (stepPlayer2.includes(bigArray[i])) {
-            bigArray[i] = "0";
+        if (stepPlayer2.includes(theInputField[i])) {
+            theInputField[i] = "0";
         }
     }
+    console.log(theInputField);
 }
-
 
 /* Finding winner */
 
@@ -126,24 +120,28 @@ function findWinnerByColumn() {
 
 
 /* */
+items.forEach(el => {
+    el.addEventListener("click", () => {
+        callPrompt(el);
+        addInGameBox();
+        //check result then function
+        if (result.length == 0) {
+            findWinnerByCross();
+        }
+        if (result.length == 0) {
+            findWinnerByLine();
+        }
+        if (result.length == 0) {
+            findWinnerByColumn();
+        }
+        console.log(result);
+
+    })
+})
 
 
-callPrompt(items);
-// callPrompt();
-addInGameBox(theInputField);
 
 
-
-if (result.length == 0) {
-    findWinnerByCross();
-}
-if (result.length == 0) {
-    findWinnerByLine();
-}
-if (result.length == 0) {
-    findWinnerByColumn();
-}
 
 
 console.log(theInputField);
-console.log(result);
