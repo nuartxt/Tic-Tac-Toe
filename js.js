@@ -15,7 +15,7 @@ let result = "";
 let flag = 0;
 
 
-function callPrompt(el) {
+function playerStep(el) {
     if (flag == 0) {
         stepPlayer1.push(Number(el.id));
         flag += 1;
@@ -30,7 +30,7 @@ function callPrompt(el) {
 
 
 
-// function callPrompt() {
+// function playerStep() {
 //     for (let i = 0; i < 5; i++) {
 //         let player1_index = Number(prompt("Go X"));
 //         let player2_index = Number(prompt("Go 0"));
@@ -118,12 +118,22 @@ function findWinnerByColumn() {
     }
 }
 
+function displayXor0(element) {
+    if (theInputField[element.id - 1] == "X") {
+        element.textContent = "X";
+    } else if (theInputField[element.id - 1] == "0") {
+        element.textContent = "0";
+    }
+}
 
 /* */
 items.forEach(el => {
     el.addEventListener("click", () => {
-        callPrompt(el);
+        playerStep(el);
         addInGameBox();
+
+        // changeGameBox(el);
+
         //check result then function
         if (result.length == 0) {
             findWinnerByCross();
@@ -135,8 +145,9 @@ items.forEach(el => {
             findWinnerByColumn();
         }
         console.log(result);
-
+        displayXor0(el);
     })
+
 })
 
 

@@ -24,10 +24,18 @@
     list-style: none;
 }
 
-.gameBoxItem{
+.gameBoxItem {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(243, 243, 129);
 
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
 }
