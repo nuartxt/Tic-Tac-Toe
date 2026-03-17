@@ -1,5 +1,5 @@
 let items = document.querySelectorAll(".gameBoxItem");
-
+let h1 = document.querySelector("h1");
 
 let theInputField = [
     1, 2, 3,
@@ -15,14 +15,18 @@ let result = "";
 let flag = 0;
 
 
+let secondFlag = []
+
 function playerStep(el) {
     if (flag == 0) {
         stepPlayer1.push(Number(el.id));
         flag += 1;
+        secondFlag.push(Number(el.id));
         console.log("step1 = " + stepPlayer1);
     } else if (flag == 1) {
         stepPlayer2.push(Number(el.id));
         flag -= 1;
+        secondFlag.push(el.id);
         console.log("step2 = " + stepPlayer2);
     }
 }
@@ -128,11 +132,23 @@ function displayXor0(element) {
 
 /* */
 items.forEach(el => {
+    elId = el.id;
     el.addEventListener("click", () => {
-        playerStep(el);
-        addInGameBox();
 
-        // changeGameBox(el);
+        // if (!secondFlag.includes(elId)) {
+        //     playerStep(el);
+        //     addInGameBox();
+        // }
+
+        if (theInputField[el.id - 1] == "X" || theInputField[el.id - 1] == "0") {
+            return;
+        } else {
+            playerStep(el);
+            addInGameBox();
+        }
+
+
+
 
         //check result then function
         if (result.length == 0) {
@@ -144,15 +160,18 @@ items.forEach(el => {
         if (result.length == 0) {
             findWinnerByColumn();
         }
-        console.log(result);
-        displayXor0(el);
-    })
 
+        displayXor0(el);
+
+
+        console.log(result);
+        h1.textContent = result;
+    })
 })
 
 
 
 
-
-
 console.log(theInputField);
+
+
