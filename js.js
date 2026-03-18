@@ -1,5 +1,7 @@
 let items = document.querySelectorAll(".gameBoxItem");
 let h2 = document.querySelector("h2");
+let replay = document.querySelector("#replay")
+
 
 let theInputField = [
     1, 2, 3,
@@ -15,18 +17,18 @@ let result = "";
 let flag = 0;
 
 
-let secondFlag = []
+// let secondFlag = []
+
+
 
 function playerStep(el) {
     if (flag == 0) {
         stepPlayer1.push(Number(el.id));
         flag += 1;
-        secondFlag.push(Number(el.id));
         console.log("step1 = " + stepPlayer1);
     } else if (flag == 1) {
         stepPlayer2.push(Number(el.id));
         flag -= 1;
-        secondFlag.push(el.id);
         console.log("step2 = " + stepPlayer2);
     }
 }
@@ -127,8 +129,34 @@ function displayXor0(element) {
         element.textContent = "X";
     } else if (theInputField[element.id - 1] == "0") {
         element.textContent = "0";
+    } else {
+        element.textContent = "";
     }
 }
+
+function replayBtn() {
+    replay.addEventListener("click", () => {
+        theInputField = [
+            1, 2, 3,
+            4, 5, 6,
+            7, 8, 9
+        ];
+        stepPlayer1 = [];
+        stepPlayer2 = [];
+        leftCrossArr = [];
+        rightCrossArr = [];
+        lineArr = [];
+        columnArr = [];
+
+        items.forEach(el => {
+            el.textContent = "";
+        })
+        console.log("clear = " + theInputField);
+    })
+}
+
+replayBtn();
+
 
 /* */
 items.forEach(el => {
@@ -148,8 +176,6 @@ items.forEach(el => {
         }
 
 
-
-
         //check result then function
         if (result.length == 0) {
             findWinnerByCross();
@@ -163,7 +189,6 @@ items.forEach(el => {
 
         displayXor0(el);
 
-
         console.log(result);
         h2.textContent = result;
     })
@@ -171,7 +196,4 @@ items.forEach(el => {
 
 
 
-
 console.log(theInputField);
-
-
