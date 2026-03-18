@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,24 @@
     <div class="container">
         <h1>Tic-Tac-Toe</h1>
         <h2></h2>
-        <ul class="gameBox">
+
+        <form class="playerChoice" id="playerChoice">
+            <div>
+                <p>Player one</p>
+                <input type="text" id="player1" placeholder="Player one name" required>
+            </div>
+            <div>
+                <p>Player two</p>
+                <input type="text" id="player2" placeholder="Player two name" required>
+            </div>
+            <div>
+                <button class="btn play" id="play">play</button>
+            </div>
+        </form>
+
+        <div class="players"></div>
+
+        <ul class="gameBox none" id="gameBox">
             <li id="1" class="gameBoxItem"></li>
             <li id="2" class="gameBoxItem"></li>
             <li id="3" class="gameBoxItem"></li>
@@ -24,7 +41,7 @@
             <li id="8" class="gameBoxItem"></li>
             <li id="9" class="gameBoxItem"></li>
         </ul>
-        <button class="replay" id="replay">replay</button>
+        <button class="btn replay none" id="replay">replay</button>
     </div>
 </body>
 

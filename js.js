@@ -1,7 +1,12 @@
 let items = document.querySelectorAll(".gameBoxItem");
 let h2 = document.querySelector("h2");
 let replay = document.querySelector("#replay")
-
+let playerChoice = document.querySelector("#playerChoice");
+let players = document.querySelector(".players");
+let player1 = document.querySelector("#player1");
+let player2 = document.querySelector("#player2")
+let score = document.querySelector(".score");
+let gameBox = document.querySelector("#gameBox");
 
 let theInputField = [
     1, 2, 3,
@@ -17,8 +22,16 @@ let result = "";
 let flag = 0;
 
 
-// let secondFlag = []
 
+
+playerChoice.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    playerChoice.classList.add("none");
+    gameBox.classList.toggle("none");
+    replay.classList.toggle("none");
+    players.textContent = `player1: ${player1.value} - X | player2: ${player2.value} - 0`
+})
 
 
 function playerStep(el) {
@@ -147,7 +160,8 @@ function replayBtn() {
         rightCrossArr = [];
         lineArr = [];
         columnArr = [];
-
+        result = "";
+        h2.textContent = "";
         items.forEach(el => {
             el.textContent = "";
         })
@@ -155,18 +169,19 @@ function replayBtn() {
     })
 }
 
-replayBtn();
+function whoWin(resultPl) {
+    if (resultPl == "X win") {
+        h2.textContent = `${player1.value} win`;
+    } else if (resultPl == "0 win") {
+        h2.textContent = `${player2.value} win`;
+    }
+}
 
 
 /* */
 items.forEach(el => {
     elId = el.id;
     el.addEventListener("click", () => {
-
-        // if (!secondFlag.includes(elId)) {
-        //     playerStep(el);
-        //     addInGameBox();
-        // }
 
         if (theInputField[el.id - 1] == "X" || theInputField[el.id - 1] == "0") {
             return;
@@ -188,12 +203,12 @@ items.forEach(el => {
         }
 
         displayXor0(el);
-
+        whoWin(result);
         console.log(result);
-        h2.textContent = result;
+
     })
 })
 
-
+replayBtn();
 
 console.log(theInputField);
